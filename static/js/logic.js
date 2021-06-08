@@ -296,7 +296,7 @@ function updateTable(){
     var Month = document.getElementById("selMonth");
     var MonthFilter = Month.options[Month.selectedIndex].text;
     var DateFilter = YearFilter+'.'+MonthFilter
-    tournament_by_fighter_url = `http://127.0.0.1:5000/api/v1.0/tournament-fighter/${DateFilter}/${FighterFilter}`
+    tournament_by_fighter_url = `https://grandsumobasho.herokuapp.com/api/v1.0/tournament-fighter/${DateFilter}/${FighterFilter}`
     //Call API to get fighter information
     d3.json(tournament_by_fighter_url).then((fighter_data)=>{
         tbody = d3.select('tbody')
