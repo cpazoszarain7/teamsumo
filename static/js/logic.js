@@ -251,7 +251,7 @@ function updateImage(){
         // console.log(FighterFilter)
 
         // Default URLs to initialize dashboard
-        image_url = 'http://127.0.0.1:5000/api/v1.0/img/'+FighterFilter
+        image_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/img/'+FighterFilter
 
         // Call API to get url
         d3.json(image_url).then((img_data)=>{
@@ -329,7 +329,7 @@ function updateInfo() {
     
 
     //Call route with fighter information
-    stables_url = 'http://127.0.0.1:5000/api/v1.0/stables'
+    stables_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/stables'
 
     figfhter_info = {}
     
@@ -382,7 +382,7 @@ function pie() {
     var Month = document.getElementById("selMonth");
     var MonthFilter = Month.options[Month.selectedIndex].text;
     var DateFilter = YearFilter+'.'+MonthFilter
-    tournament_by_fighter_url = `http://127.0.0.1:5000/api/v1.0/tournament-fighter/${DateFilter}/${FighterFilter}`
+    tournament_by_fighter_url = `https://grandsumobasho.herokuapp.com/api/v1.0/tournament-fighter/${DateFilter}/${FighterFilter}`
     d3.json(tournament_by_fighter_url).then((fighter_data)=>{
         var moves = fighter_data.map(tournament => tournament.finishing_move)
         moves = frequency(moves)
@@ -461,8 +461,8 @@ function newTournament(){
  
     
     //Default URLs to initialize dashboard
-    stables_url = 'http://127.0.0.1:5000/api/v1.0/stables'
-    tournament_url = 'http://127.0.0.1:5000/api/v1.0/tournament/'+DateFilter
+    stables_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/stables'
+    tournament_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/tournament/'+DateFilter
  
 
     //Make API calls to get data and initializa dashboard
