@@ -12,7 +12,7 @@ from dateutil.relativedelta import relativedelta
 # Database Setup
 #################################################
 #Connect to Postgress
-engine = create_engine(f'postgres://biohpcuyvwyfaj:c4482383aab6e82a6695979dcafacc2ca7803503994587b44f4a74b0632c258e@ec2-35-174-35-242.compute-1.amazonaws.com:5432/d7f09hj0q6e97r')
+engine = create_engine(f'postgres://ztgexgjclxfheo:20bb0d604d935040e9de0b13db2c690d4fed54fe3754e320c0cdd6eff9cedf57@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d2rnm6e1m17esc')
 connection = engine.connect()
 
 # reflect an existing database into a new model
