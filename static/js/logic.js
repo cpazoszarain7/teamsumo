@@ -461,7 +461,7 @@ function newTournament(){
  
     
     //Default URLs to initialize dashboard
-    stables_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/stables'
+    stables_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/stables/'
     tournament_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/tournament/'+DateFilter
  
 
