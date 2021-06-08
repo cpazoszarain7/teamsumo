@@ -135,7 +135,7 @@ function createBaseLayers(){
           'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
           maxZoom: 18,
           id: "light-v10",
-          accessToken: API_KEY,
+          accessToken: process.env.GOOGLE_API_KEY,
         }
       );
     
@@ -146,7 +146,7 @@ function createBaseLayers(){
         'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
         maxZoom: 18,
         id: "dark-v10",
-        accessToken: API_KEY,
+        accessToken: process.env.GOOGLE_API_KEY,
     }
     );
 
