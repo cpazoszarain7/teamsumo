@@ -134,7 +134,7 @@ function createBaseLayers(){
     // Call API to get url
     d3.json(set_url).then((data)=>{
 
-        print(data)
+        console.log(data)
 
         var lightmap = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
