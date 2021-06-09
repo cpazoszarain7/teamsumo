@@ -485,7 +485,7 @@ function newTournament(){
                 updateFightersList(tournament_data) 
         
                 //Update Map with List of fighters
-                updateJapanMap(tournament_data, stables_data, settings_data[0].key)
+                updateJapanMap(tournament_data, stables_data)
 
                 
             // })           
