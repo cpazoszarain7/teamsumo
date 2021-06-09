@@ -46,9 +46,12 @@ def home():
 @app.route("/settings")
 def settings():
     key = environ.get('GOOGLE_API_KEY')
+    dictionary_list = []
+
     settings_dic = {'key':key}
-    response = jsonify(settings_dic)
-    return response
+    dictionary_list.append(settings_dic)
+    
+    return jsonify(dictionary_list)
 
 
 # route to stables 
