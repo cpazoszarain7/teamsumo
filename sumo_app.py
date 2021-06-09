@@ -7,7 +7,7 @@ from flask import Flask, jsonify
 # from config import password
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-from flask_cors import CORS
+
 
 ################################################
 # Database Setup
@@ -31,7 +31,7 @@ images = Base.classes.image
 # Create an instance of Flask
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
-CORS(app)
+
 
 
 # Route to render index.html template using data from Mongo
@@ -84,9 +84,10 @@ def fighter():
         fighter_dictionary["Fighter_Info"] = attribute_dictionary
         fighter_dictionary["Dojo"] = dojo_location_dictionary
         
-        dictionary_list.append(fighter_dictionary)
+        response = dictionary_list.append(fighter_dictionary)
+        response.headers.add('Access-Control-Allow-Origin', '*')
 
-    return jsonify(dictionary_list)
+    return response
 
 
 # route to tournaments by tournament and fighter
