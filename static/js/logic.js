@@ -75,7 +75,7 @@ function updateFightersList(tournament){
 //******************************************************* */
 //FUNCTION TO UPDATE MAP OF JAPAN WITH MARKERS FOR ALL FIGHTERS
 
-function updateJapanMap(tournament, stables, settings){
+function updateJapanMap(tournament, stables){
 
  
     //create the map object
@@ -83,7 +83,7 @@ function updateJapanMap(tournament, stables, settings){
 
     
     //create the base layers.baselayers is a dictionary/Object
-    let baseLayers = createBaseLayers(settings);
+    let baseLayers = createBaseLayers();
    
     //Create Legend
     let legend = createLegend();
@@ -126,7 +126,7 @@ function MapObject(){
 
 };
 
-function createBaseLayers(map_setting){
+function createBaseLayers(){
 
     
     var lightmap = L.tileLayer(
