@@ -480,12 +480,12 @@ function newTournament(){
                 console.log(tournament_data)
                 console.log(settings_data)
 
-                // initDashboard(stables_data,tournament_data)
+                initDashboard(stables_data,tournament_data)
                 //Initialize List of Fighters for Default Tournament
-                // updateFightersList(tournament_data) 
+                updateFightersList(tournament_data) 
         
                 //Update Map with List of fighters
-                // updateJapanMap(tournament_data, stables_data, settings_data)
+                updateJapanMap(tournament_data, stables_data, settings_data)
 
                 
             })           
