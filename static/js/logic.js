@@ -75,7 +75,7 @@ function updateFightersList(tournament){
 //******************************************************* */
 //FUNCTION TO UPDATE MAP OF JAPAN WITH MARKERS FOR ALL FIGHTERS
 
-function updateJapanMap(tournament, stables){
+function updateJapanMap(tournament, stables, settings){
 
  
     //create the map object
@@ -83,7 +83,7 @@ function updateJapanMap(tournament, stables){
 
     
     //create the base layers.baselayers is a dictionary/Object
-    let baseLayers = createBaseLayers();
+    let baseLayers = createBaseLayers(settings);
    
     //Create Legend
     let legend = createLegend();
@@ -126,45 +126,38 @@ function MapObject(){
 
 };
 
-function createBaseLayers(){
+function createBaseLayers(map_setting){
 
-    // Default URLs to initialize dashboard
-    set_url = 'https://grandsumobasho.herokuapp.com/settings'
+    
+    var lightmap = L.tileLayer(
+        "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+        attribution:
+        'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+        maxZoom: 18,
+        id: "light-v10",
+        accessToken: map_setting,
+        }
+    );
+    
+    var darkmap = L.tileLayer(
+    "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+    {
+        attribution:
+        'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+        maxZoom: 18,
+        id: "dark-v10",
+        accessToken: map_setting,
+    }
+    );
 
-    // Call API to get url
-    d3.json(set_url).then((data)=>{
+    var baseMaps = {
+        "Light Map": lightmap,
+        "Dark Map": darkmap
+    };
+    
+    return baseMaps;
 
-        console.log(data)
-
-        // var lightmap = L.tileLayer(
-        //     "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-        //     {
-        //     attribution:
-        //     'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-        //     maxZoom: 18,
-        //     id: "light-v10",
-        //     accessToken: data.key,
-        //     }
-        // );
-        
-        // var darkmap = L.tileLayer(
-        // "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-        // {
-        //     attribution:
-        //     'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-        //     maxZoom: 18,
-        //     id: "dark-v10",
-        //     accessToken: data.key,
-        // }
-        // );
-
-        // var baseMaps = {
-        //     "Light Map": lightmap,
-        //     "Dark Map": darkmap
-        // };
-        
-        // return baseMaps;
-    })
     
 };
 
@@ -474,23 +467,27 @@ function newTournament(){
     //Default URLs to initialize dashboard
     stables_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/stables/'
     tournament_url = 'https://grandsumobasho.herokuapp.com/api/v1.0/tournament/'+DateFilter
+    settings_url = 'https://grandsumobasho.herokuapp.com/settings'
  
 
     //Make API calls to get data and initializa dashboard
     d3.json(stables_url).then((stables_data)=> {
-
+        console.log(stables_data)
         d3.json(tournament_url).then((tournament_data)=> {
-
-            
+            console.log(tournament_data)
+            d3.json(settings_url).then((settings_data)=>{
+                console.log(settings_data)
 
                 initDashboard(stables_data,tournament_data)
                 //Initialize List of Fighters for Default Tournament
                 updateFightersList(tournament_data) 
         
                 //Update Map with List of fighters
-                updateJapanMap(tournament_data, stables_data)
+                updateJapanMap(tournament_data, stables_data, settings_data)
 
-                           
+                
+            })           
+              
         })
 
     })
