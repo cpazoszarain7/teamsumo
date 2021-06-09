@@ -136,34 +136,34 @@ function createBaseLayers(){
 
         console.log(data)
 
-        var lightmap = L.tileLayer(
-            "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-            {
-            attribution:
-            'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-            maxZoom: 18,
-            id: "light-v10",
-            accessToken: data.key,
-            }
-        );
+        // var lightmap = L.tileLayer(
+        //     "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        //     {
+        //     attribution:
+        //     'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+        //     maxZoom: 18,
+        //     id: "light-v10",
+        //     accessToken: data.key,
+        //     }
+        // );
         
-        var darkmap = L.tileLayer(
-        "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-        {
-            attribution:
-            'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-            maxZoom: 18,
-            id: "dark-v10",
-            accessToken: data.key,
-        }
-        );
+        // var darkmap = L.tileLayer(
+        // "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        // {
+        //     attribution:
+        //     'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+        //     maxZoom: 18,
+        //     id: "dark-v10",
+        //     accessToken: data.key,
+        // }
+        // );
 
-        var baseMaps = {
-            "Light Map": lightmap,
-            "Dark Map": darkmap
-        };
+        // var baseMaps = {
+        //     "Light Map": lightmap,
+        //     "Dark Map": darkmap
+        // };
         
-        return baseMaps;
+        // return baseMaps;
     })
     
 };
