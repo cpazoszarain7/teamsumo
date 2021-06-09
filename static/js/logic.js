@@ -137,7 +137,7 @@ function createBaseLayers(settings){
         'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
         maxZoom: 18,
         id: "light-v10",
-        accessToken: key[0],
+        accessToken: key,
         }
     );
     
@@ -148,7 +148,7 @@ function createBaseLayers(settings){
         'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
         maxZoom: 18,
         id: "dark-v10",
-        accessToken: key[0],
+        accessToken: key,
     }
     );
 
