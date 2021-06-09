@@ -472,18 +472,20 @@ function newTournament(){
 
     //Make API calls to get data and initializa dashboard
     d3.json(stables_url).then((stables_data)=> {
-        console.log(stables_data)
+        
         d3.json(tournament_url).then((tournament_data)=> {
-            console.log(tournament_data)
+            
             d3.json(settings_url).then((settings_data)=>{
+                console.log(stables_data)
+                console.log(tournament_data)
                 console.log(settings_data)
 
-                initDashboard(stables_data,tournament_data)
+                // initDashboard(stables_data,tournament_data)
                 //Initialize List of Fighters for Default Tournament
-                updateFightersList(tournament_data) 
+                // updateFightersList(tournament_data) 
         
                 //Update Map with List of fighters
-                updateJapanMap(tournament_data, stables_data, settings_data)
+                // updateJapanMap(tournament_data, stables_data, settings_data)
 
                 
             })           
