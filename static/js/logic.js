@@ -128,33 +128,42 @@ function MapObject(){
 
 function createBaseLayers(){
 
-    var lightmap = L.tileLayer(
+    // Default URLs to initialize dashboard
+    set_url = 'https://grandsumobasho.herokuapp.com/settings'
+
+    // Call API to get url
+    d3.json(set_url).then((data)=>{
+
+        var lightmap = L.tileLayer(
+            "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+            {
+            attribution:
+            'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+            maxZoom: 18,
+            id: "light-v10",
+            accessToken: data.key,
+            }
+        );
+        
+        var darkmap = L.tileLayer(
         "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
-          attribution:
-          'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-          maxZoom: 18,
-          id: "light-v10",
-          accessToken: GOOGLE_API_KEY,
+            attribution:
+            'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
+            maxZoom: 18,
+            id: "dark-v10",
+            accessToken: data.key,
         }
-      );
-    
-    var darkmap = L.tileLayer(
-    "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-    {
-        attribution:
-        'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
-        maxZoom: 18,
-        id: "dark-v10",
-        accessToken: GOOGLE_API_KEY,
-    }
-    );
+        );
 
-    var baseMaps = {
-        "Light Map": lightmap,
-        "Dark Map": darkmap
-      };
-      return baseMaps;
+        var baseMaps = {
+            "Light Map": lightmap,
+            "Dark Map": darkmap
+        };
+        
+        return baseMaps;
+    })
+    
 };
 
 function createLayers(stables){
