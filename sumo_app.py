@@ -91,10 +91,10 @@ def fighter():
         fighter_dictionary["Fighter_Info"] = attribute_dictionary
         fighter_dictionary["Dojo"] = dojo_location_dictionary
         
-        response = jsonify(dictionary_list.append(fighter_dictionary))
+        dictionary_list.append(fighter_dictionary)
         # response.headers.add('Access-Control-Allow-Origin', '*')
 
-    return response
+    return jsonify(dictionary_list)
 
 
 # route to tournaments by tournament and fighter
