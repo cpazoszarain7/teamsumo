@@ -7,6 +7,7 @@ from flask import Flask, jsonify
 # from config import password
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from flask_cors import CORS
 
 ################################################
 # Database Setup
@@ -30,6 +31,8 @@ images = Base.classes.image
 # Create an instance of Flask
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
+CORS(app)
+
 
 # Route to render index.html template using data from Mongo
 @app.route("/")
