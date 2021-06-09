@@ -7,6 +7,7 @@ from flask import Flask, jsonify
 # from config import password
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from os import environ
 
 
 ################################################
@@ -41,7 +42,13 @@ def home():
     # Return template and data
     return render_template("index.html")
 
-
+#read config variables
+@app.route("/settings")
+def settings():
+    key = environ.get('GOOGLE_API_KEY')
+    settings_dic = {'key':key}
+    response = jsonify(settings_dic)
+    return response
 
 
 # route to stables 
