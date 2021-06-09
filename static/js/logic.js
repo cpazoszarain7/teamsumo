@@ -476,8 +476,8 @@ function newTournament(){
         d3.json(tournament_url).then((tournament_data)=> {
             
             d3.json(settings_url).then((settings_data)=>{
-                console.log(stables_data)
-                console.log(tournament_data)
+                // console.log(stables_data)
+                // console.log(tournament_data)
                 console.log(settings_data)
 
                 initDashboard(stables_data,tournament_data)
