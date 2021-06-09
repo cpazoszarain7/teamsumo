@@ -75,7 +75,7 @@ function updateFightersList(tournament){
 //******************************************************* */
 //FUNCTION TO UPDATE MAP OF JAPAN WITH MARKERS FOR ALL FIGHTERS
 
-function updateJapanMap(tournament, stables){
+function updateJapanMap(tournament, stables, settings){
 
  
     //create the map object
@@ -83,7 +83,7 @@ function updateJapanMap(tournament, stables){
 
     
     //create the base layers.baselayers is a dictionary/Object
-    let baseLayers = createBaseLayers();
+    let baseLayers = createBaseLayers(settings);
    
     //Create Legend
     let legend = createLegend();
@@ -126,8 +126,9 @@ function MapObject(){
 
 };
 
-function createBaseLayers(){
+function createBaseLayers(settings){
 
+    key = settings.map(d => d.key)
     
     var lightmap = L.tileLayer(
         "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -136,7 +137,7 @@ function createBaseLayers(){
         'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
         maxZoom: 18,
         id: "light-v10",
-        accessToken: map_setting,
+        accessToken: key[0],
         }
     );
     
@@ -147,7 +148,7 @@ function createBaseLayers(){
         'Doris [ドリス] • Nader [ナダー] • Carlos [カルロス]',
         maxZoom: 18,
         id: "dark-v10",
-        accessToken: map_setting,
+        accessToken: key[0],
     }
     );
 
@@ -475,7 +476,7 @@ function newTournament(){
         
         d3.json(tournament_url).then((tournament_data)=> {
             
-            // d3.json(settings_url).then((settings_data)=>{
+            d3.json(settings_url).then((settings_data)=>{
                 // console.log(stables_data)
                 // console.log(tournament_data)
                 // console.log(settings_data)
@@ -485,10 +486,10 @@ function newTournament(){
                 updateFightersList(tournament_data) 
         
                 //Update Map with List of fighters
-                updateJapanMap(tournament_data, stables_data)
+                updateJapanMap(tournament_data, stables_data, settings_data)
 
                 
-            // })           
+            })           
               
         })
 
