@@ -3,7 +3,7 @@
 //FUNCTION TO INITIALIZE DASHBOARD
 
 function initDashboard(){
-    console.log("Hello world!");
+    
     //Change flag for function to be callend just one time
     initDashboard = noop; // swap the functions
 
