@@ -28,6 +28,9 @@ results = Base.classes.tournament_results
 fighters = Base.classes.stables
 images = Base.classes.image
 
+# create session
+session = Session(engine)
+
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -59,7 +62,7 @@ def settings():
 def fighter():
 
     # create session
-    session = Session(engine)
+    # session = Session(engine)
 
     #collect fighters
     fighter = session.query(fighters.fighter).all()
@@ -104,7 +107,7 @@ def fighter():
 @app.route("/api/v1.0/tournament-fighter/<tournament>/<fighter>")
 def tournament_fighter(tournament, fighter):
     # create session
-    session = Session(engine)
+    # session = Session(engine)
     #collect tournaments
     tournament = session.query(results.tournament, results.day, results.fighter1_id, results.fighter1_rank, results.fighter1_name, results.fighter1_result, results.fighter1_win, results.finishing_move, results.fighter2_id, results.fighter2_rank, results.fighter2_name, results.fighter2_result, results.fighter2_win).filter(results.tournament == tournament).filter(results.fighter1_name == fighter).all() 
     dictionary_list = []
@@ -134,7 +137,7 @@ def tournament(tournament):
 
 
     # create session
-    session = Session(engine)
+    # session = Session(engine)
 
     #collect tournaments
     tournament = session.query(results.tournament, results.day, results.fighter1_id, results.fighter1_rank, results.fighter1_name, results.fighter1_result, results.fighter1_win, results.finishing_move, results.fighter2_id, results.fighter2_rank, results.fighter2_name, results.fighter2_result, results.fighter2_win).filter(results.tournament == tournament).all() 
@@ -168,7 +171,7 @@ def tournament(tournament):
 def img(fighter):
 
     # create session
-    session = Session(engine)
+    # session = Session(engine)
 
     #collect tournaments
     img = session.query(images.fighter_name, images.image_url).filter(images.fighter_name == fighter).all() 
